@@ -1,0 +1,125 @@
+body{
+    font-family: cursive;
+}
+.ficha{
+    width: 300px;
+    height: 400px;
+    color: white;
+    text-align: center;
+    margin: 6px;
+    border: 4px solid black;
+    color: black;
+    border-radius: 20px;
+    position: relative;
+}
+.bottom-position{
+    position: absolute;
+    bottom: 10px;
+    left: 50px;
+}
+.inputs{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.inputs input{
+    margin-top: 20px;
+    width: 200px;
+    padding: 10px;
+    border-radius: 10px;
+}
+.gifs{
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.crear{
+    margin-top: 20px;
+}
+.nextButton{
+    display: flex;
+    justify-content: space-around;
+    cursor: pointer;
+    
+}
+.col-md-9{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.flex{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.comicsFavoritos{
+    top: 50px;
+}
+.comicsFavoritos img{
+    margin: 5px;
+    
+}
+.center{
+    text-align: center;
+}
+.gifFavoritos{
+    top: 50px;
+}
+.gifFavoritos img{
+    margin: 5px;
+}
+.datosPersonales{
+    top:120px;
+}
+.datosPersonales p{
+    font-size: 20px;
+}
+.gif{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100px;
+}
+.gifFav img {
+    width: 100px;
+    height: 100px;
+    margin: 5px;
+}
+
+.contenedorGifFav{
+    width: 419px;
+    height: 100px;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.contenedorGifs{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.borderRed{
+    border-color: red;
+}
+.contenedorGifs img{
+    width: 100px;
+    height: 100px;
+    margin: 5px;
+    
+    
+}
+.imgDark{
+    filter: blur(6px);
+}
+.absolute{
+    position: absolute;
+    top:10px;
+    left:10px;
+}
+.contenedor-fichas{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}

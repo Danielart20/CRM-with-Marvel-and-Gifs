@@ -1,0 +1,92 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-7 contenedor-fichas">
+            <div ng-repeat="customer in customerList track by customer.id" class="ficha">
+                <h1>{{customer.nombre}}</h1>
+                <img src="{{customer.imagen}}" alt="imagen" width="220" height="120">
+                <h2>{{customer.email}}</h2>
+                <p>{{customer.telefono}}</p>
+                <p>Tienes {{customer.gifs.length}} Gifs Favoritos</p>
+                <p>Tienes {{customer.comics.length}} Comics Favoritos</p>
+                <div ng-repeat="customer in customer.comics track by customer.id">
+                </div>
+                <div class="bottom-position">
+                    <button class="btn btn-primary" ng-click="updateCustomer(customer.id)">Editar</button>
+                    <button class="btn btn-danger" ng-click="removeCustomer(customer.id)">Eliminar</button>
+                    <a class="btn btn-warning" href="#!/user/{{customer.id}}">Ver</a>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-5 center">
+            <div class="formulario">
+                <button class="btn btn-classic" ng-click="cont='datos'">Datos</button>
+                <button class="btn btn-classic" ng-click="cont='gifs'">Gifs</button>
+                <button class="btn btn-classic" ng-click="cont='comics'">Comics</button>
+                <form name="form">
+                    <div ng-show="cont=='datos'" class="inputs">
+
+                        <input name="nombre" ng-required="true" type="text" placeholder="nombre" ng-model="customer.nombre">
+                        <input name="email" ng-required="true" type="email" placeholder="Email" ng-model="customer.email">
+                        <input name="telefono" ng-required="true" ng-pattern=”/^[9|6|7][0-9]{8}$/” type="text" placeholder="Teléfono" ng-model="customer.telefono">
+                        <span style="color:red;" ng-if="form.telefono.$touched && form.telefono.$invalid">Introduce un número correcto</span>
+                        <input name="imagen" ng-required="true" type="text" placeholder="URL de la foto" ng-model="customer.imagen">
+
+                    </div>
+
+
+                    <div ng-show="cont=='gifs'">
+                        <p class="gifs">Escoge tus Gifs Favoritos</p>
+                        <hr>
+                        <div class="contenedorGifFav">
+                            <div ng-repeat="gif in customer.gifs track by gif.id" ng-click="removeGifFav(gif.id)" class="gifFav">
+                                <img src="{{gif.url}}" alt="gif">
+                            </div>
+
+                        </div>
+                        <input type="text" ng-required="true" placeholder="Buscar Gifs..." ng-model="searchGif">
+                        <button class="btn btn-danger" ng-click="AllGif(searchGif, 0); men=0">Buscar</button>
+                        <button class="btn btn-warning" ng-click="AllGifTrending()">Trending</button>
+                        <div class="nextButton">
+
+                            <img ng-show="offsetcomics==0" src="../img/flechaIzquierda.png" ng-click="AllGif(searchGif, false)" alt="flecha izquierda" width="50" height="50">
+                            <img ng-show="men==0" src="../img/flechaDerecha.png" ng-click="AllGif(searchGif, true);" alt="flecha derecha" width="50" height="50">
+
+                        </div>
+
+                        <div class="contenedorGifs">
+                            <div ng-repeat="gif in Gifs track by gif.id" ng-click="gifFavo(gif)">
+                                <img src="{{gif.images.preview_gif.url}}" alt="gif">
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-show="cont=='comics'">
+                        <p class="gifs">Escoge tus Comics favoritos!</p>
+                        <div ng-repeat="comic in customer.comics track by comic.id" ng-click="removeComicFav(comic.id);colorChange()">
+                            <img ng-src="{{comic.Url}}/portrait_xlarge.{{comic.extension}}" alt="comic">
+                        </div>
+                        <hr>
+                        <input type="text" ng-required="true" ng-model="searchComic" placeholder="Buscar comic por el título">
+                        <button class="btn btn-danger" ng-click="AllComics(searchComic); pen=0">Buscar</button>
+                        <div class="nextButton">
+                           
+
+<!--                           TODO: La flecha izquierda no debe aparecer si estoy en la "pagina 1" -->
+                            <img ng-show="paginaComic == 1" src="../img/flechaIzquierda.png" ng-click="AllComicsLeft(searchComic)" alt="flecha izquierda" width="50" height="50">
+                            <img ng-show="pen==0" src="../img/flechaDerecha.png" ng-click="AllComicsRight(searchComic)" alt="flecha derecha" width="50" height="50">
+                        </div>
+
+                        <div ng-repeat="comics in Comics track by comics.id" ng-click="ComicFavo(comics)">
+                            <img ng-src="{{comics.images[0].path}}/portrait_xlarge.{{comics.images[0].extension}}" alt="{{comics.title}}">
+
+                        </div>
+
+
+                    </div>
+                    <button ng-show="showme" ng-click="update()">Modificar</button>
+                    <button class="btn btn-info crear" ng-disabled="form.$invalid" ng-show="!showme" ng-click="newCustomer(customer)">Crear</button>
+                </form>
+            </div>
+
+        </div>
+    </div>

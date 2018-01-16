@@ -1,0 +1,27 @@
+<div class="container-fluid center">
+ <a href="#!/" class="btn btn-danger absolute">Volver atrás</a>
+   <div class="row">
+   <div class="col-md-4 datosPersonales">
+    <img src="{{user.imagen}}" alt="imagen" width="220" height="120">
+    <h2>Datos Personales</h2>
+    <p><u><b>Nombre:</b></u> {{user.nombre}}</p>
+    <p><u><b>Teléfono:</b></u> {{user.telefono}}</p>
+    <p><u><b>Email:</b></u> {{user.email}}</p>
+    </div>
+    <div class="col-md-4 gifFavoritos">
+    <h2>GIFS FAVORITOS</h2>
+        <div ng-repeat="gif in user.gifs" class="flex">
+            <img ng-src="{{gif.url}}" alt="gif" width="130" height="130">
+       </div>
+   </div>
+   <div class="col-md-4 comicsFavoritos">
+        <h2>CÓMICS FAVORITOS</h2>
+           <div ng-repeat="comic in user.comics" class="flex">
+           <a href="#!/comic/{{comic.id}}">
+            <img ng-src="{{comic.Url}}/portrait_xlarge.{{comic.extension}}" alt="comic">
+            </a>
+       </div>
+
+    </div>
+</div>
+</div>

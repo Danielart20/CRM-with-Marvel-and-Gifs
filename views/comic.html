@@ -1,0 +1,15 @@
+<div class="container">
+<a href="#!/" class="btn btn-danger absolute">Volver atrás</a>
+           
+        <div ng-repeat="comic in comics">
+          <h1>{{comic.title}}</h1>
+           <div ng-repeat="com in comic.images">
+               
+               <img ng-src="{{com.path}}/portrait_incredible.{{com.extension}}" alt="comic">
+               
+           </div>
+            <p>{{comic.description}}</p>
+        </div>
+               
+    
+</div>
